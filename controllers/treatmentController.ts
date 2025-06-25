@@ -3,7 +3,7 @@ import { getTreatments } from "../services/treatmentService";
 const getAllTreatments = async (context: any) => {
   try {
     const treatments = await getTreatments();
-     context.set.status = 200;
+    context.set.status = 200;
     return {
       success: true,
       data: treatments,
