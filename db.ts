@@ -1,10 +1,10 @@
-import { config } from 'dotenv';
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 
-config(); // 👈 This loads the .env file
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
 
-const supabaseUrl: string = process.env.SUPABASE_URL!;
-const supabaseKey: string = process.env.SUPABASE_KEY!;
-const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey);
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error("Missing Supabase credentials (URL or KEY). Check Railway environment variables.");
+}
 
-export { supabase };
+export const supabase = createClient(supabaseUrl, supabaseKey);
