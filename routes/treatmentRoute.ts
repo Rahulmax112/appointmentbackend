@@ -1,6 +1,7 @@
-import type { Elysia } from 'elysia';
+import { Elysia } from 'elysia';
 import { getAllTreatments } from '../controllers/treatmentController';
 
-export default function treatmentRoutes(app: Elysia) {
-  app.get('/treatments', getAllTreatments);
-}
+const treatmentRoutes = new Elysia()
+  .get('/treatments', getAllTreatments);
+
+export default treatmentRoutes;
