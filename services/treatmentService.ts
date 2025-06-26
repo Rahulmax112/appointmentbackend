@@ -11,4 +11,21 @@ const getTreatments = async() => {
     }
 }
 
-export {getTreatments};
+const getAppointmentByDate = async(appointmentDate:any)=> {
+    try{
+
+        const { data: appointments, error } = await supabase
+        .from('appointments')
+        .select('start_time, end_time')
+        .eq('appointment_date', appointmentDate);
+
+        if(error) throw error;
+        return appointments;
+
+
+    }catch(e){
+        throw e;
+    }
+}
+
+export {getTreatments, getAppointmentByDate};
