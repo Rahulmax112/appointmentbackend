@@ -1,0 +1,6 @@
+const bookAppointment = ()=>{
+
+}
+
+
+export {bookAppointment};
